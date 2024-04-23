@@ -13,7 +13,7 @@ This is a sample API project for managing products.
 
 ## Getting Started
 
-1. Clone the repository: `git clone https://github.com/your-repo.git`
+1. Clone the repository: `git clone https://github.com/mihan4ik234/inventory-accounting.git`
 2. Install dependencies: `dotnet restore`
 3. Update the database: `dotnet ef database update`
 4. Run the application: `dotnet run`
