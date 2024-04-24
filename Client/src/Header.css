@@ -1,0 +1,29 @@
+.navbar{
+    display: flex;
+    justify-content: space-around;
+    background-color: #19A438;
+    height: 70px;
+    align-items: center;
+    font-size: 18px;
+    color: black;
+    font-family: Monda;
+
+}
+
+#name{
+   cursor: pointer;
+}
+
+#butt{
+    color: blue;
+    cursor: pointer;
+}
+
+#button{
+    background-color: #D9D9D9;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-bottom: 3px;
+    border-radius: 30px;
+    cursor: pointer;
+}

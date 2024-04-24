@@ -1,0 +1,28 @@
+.all{
+padding: 30px 10px 30px 10px;
+}
+
+.filter{
+    background-color: #D9D9D9;
+    width: 97%;
+    margin: auto;
+    height: 150px;
+    border-radius: 30px;
+}
+
+#name{
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-bottom: 40px;
+    font-size: 18px;
+}
+
+.variant{
+    display: flex;
+    justify-content: space-around;
+    font-size: 16px;
+    align-items: center;
+}
+#variant {
+    cursor: pointer;
+}
