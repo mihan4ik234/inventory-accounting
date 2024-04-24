@@ -1,28 +1,47 @@
-.all{
-padding: 30px 10px 30px 10px;
+/* Общие стили для .all */
+.all {
+    padding: 30px 10px; /* Уменьшаем горизонтальные отступы на мобильных устройствах */
 }
 
-.filter{
+/* Стили для .filter */
+.filter {
     background-color: #D9D9D9;
     width: 97%;
     margin: auto;
-    height: 150px;
+    height: auto; /* Автоматическая высота в зависимости от содержимого */
     border-radius: 30px;
+    padding: 20px; /* Общие внутренние отступы */
 }
 
-#name{
-    padding-top: 20px;
-    padding-left: 20px;
-    padding-bottom: 40px;
+/* Стили для #name */
+#name {
+    padding: 20px 20px 10px; /* Внутренние отступы сверху, слева и снизу */
     font-size: 18px;
 }
 
-.variant{
+/* Стили для .variant */
+.variant {
     display: flex;
     justify-content: space-around;
     font-size: 16px;
     align-items: center;
+    flex-wrap: wrap; /* Разрешаем перенос элементов на новую строку при необходимости */
 }
+
+/* Стили для элементов с идентификатором #variant */
 #variant {
     cursor: pointer;
+    margin-bottom: 10px; /* Добавляем отступ между вариантами */
+}
+
+/* Медиа-запрос для мобильных устройств */
+@media only screen and (max-width: 600px) {
+    .filter {
+        width: 95%; /* Уменьшаем ширину на маленьких экранах */
+        border-radius: 20px; /* Уменьшаем радиус границ для компактности */
+    }
+
+    #name {
+        font-size: 16px; /* Уменьшаем размер текста для мобильных устройств */
+    }
 }

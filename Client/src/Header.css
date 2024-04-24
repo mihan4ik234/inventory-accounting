@@ -1,29 +1,37 @@
-.navbar{
+/* Общие стили для .navbar */
+.navbar {
     display: flex;
     justify-content: space-around;
     background-color: #19A438;
-    height: 70px;
+    min-height: 70px; /* Минимальная высота для обеспечения видимости */
     align-items: center;
     font-size: 18px;
     color: black;
     font-family: Monda;
-
+    padding: 0 20px; /* Горизонтальные отступы для контейнера */
 }
 
-#name{
-   cursor: pointer;
+/* Стили для элементов .navbar при маленьких экранах (мобильные устройства) */
+@media only screen and (max-width: 600px) {
+    .navbar {
+        flex-direction: column; /* Размещаем элементы вертикально */
+        height: auto; /* Автоматическая высота, в зависимости от содержимого */
+    }
+
+    #name, #butt, #button {
+        margin: 10px 0; /* Добавляем вертикальные отступы между элементами */
+        width: 100%; /* Занимать всю доступную ширину */
+        text-align: center; /* Центрировать текст по центру */
+    }
 }
 
-#butt{
-    color: blue;
-    cursor: pointer;
-}
+/* Стили для элементов .navbar при средних и больших экранах */
+@media only screen and (min-width: 601px) {
+    .navbar {
+        justify-content: flex-start; /* Размещаем элементы слева */
+    }
 
-#button{
-    background-color: #D9D9D9;
-    padding-left: 7px;
-    padding-right: 7px;
-    padding-bottom: 3px;
-    border-radius: 30px;
-    cursor: pointer;
+    #name, #butt, #button {
+        margin: 0 10px; /* Добавляем горизонтальные отступы между элементами */
+    }
 }
