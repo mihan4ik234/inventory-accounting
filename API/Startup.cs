@@ -27,11 +27,23 @@ namespace IA_API
 
             services.AddScoped<IProductService, ProductService>();
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin()
+                               .AllowAnyMethod()
+                               .AllowAnyHeader();
+                    });
+            });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "IA_API", Version = "v1" });
             });
         }
+
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ProductContext dbContext)
         {
@@ -48,12 +60,15 @@ namespace IA_API
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "IA_API V1");
             });
 
+            app.UseCors("AllowAll");
+
             app.UseRouting();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
         }
+
     }
 }
 
