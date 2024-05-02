@@ -6,9 +6,9 @@ function AddTovarPage() {
     id: 0,
     purchaseDate: new Date().toISOString(),
     acceptanceDate: new Date().toISOString(),
-    status: 0,
-    name: "",
-    purchaseArticle: "",
+    status: "string",
+    name: "string",
+    purchaseArticle: "string",
     amount: 0,
     quantity: 0,
   });
@@ -84,8 +84,8 @@ function AddTovarPage() {
               value={formData.status}
               onChange={handleChange}
             >
-              <option value="0">Не принят</option>
-              <option value="1">Принят</option>
+              <option value="0">Pending</option>
+              <option value="1">Accepted</option>
             </select>
           </label>
           <label>

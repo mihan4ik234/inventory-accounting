@@ -33,10 +33,6 @@ namespace IA_API.Services
 
         public void AddProduct(Product product)
         {
-            if (product.Status == default(ProductStatus))
-            {
-                product.Status = ProductStatus.Pending;
-            }
 
             _context.Products.Add(product);
             _context.SaveChanges();

@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace IA_API.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    [Migration("20240423061924_InitialCreate")]
+    [Migration("20240502112527_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -53,8 +53,8 @@ namespace IA_API.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("integer");
 
-                    b.Property<int>("Status")
-                        .HasColumnType("integer");
+                    b.Property<string>("Status")
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
