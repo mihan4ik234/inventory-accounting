@@ -1,0 +1,19 @@
+.tbl {
+    overflow-x: scroll;
+}
+
+.purchase-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.purchase-table th,
+.purchase-table td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.purchase-table th {
+    background-color: #ff0000;
+}

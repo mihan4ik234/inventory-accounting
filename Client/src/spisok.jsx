@@ -1,34 +1,48 @@
 import { useState, useEffect } from 'react';
+import './spisok.css'
 
-const Spisok = () => {
-  const [products, setProducts] = useState([]);
+function PurchaseTable() {
+    const [purchases, setPurchases] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const url = 'http://localhost:5052/api/products';
+    useEffect(() => {
+        fetch('http://localhost:5052/api/products')
+            .then(response => response.json())
+            .then(data => setPurchases(data))
+            .catch(error => console.error('Ошибка при получении данных:', error));
+    }, []);
 
-      try {
-        const res = await fetch(url);
-        const data = await res.json();
-        setProducts(data);
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    };
+    return (
+        <div className="tbl">
+            <table className="purchase-table"> {/* добавляем класс для стилизации */}
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Дата покупки</th>
+                        <th>Дата принятия</th>
+                        <th>Статус</th>
+                        <th>Название</th>
+                        <th>Статья покупки</th>
+                        <th>Сумма</th>
+                        <th>Количество</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {purchases.map(purchase => (
+                        <tr key={purchase.id}>
+                            <td>{purchase.id}</td>
+                            <td>{purchase.purchaseDate}</td>
+                            <td>{purchase.acceptanceDate}</td>
+                            <td>{purchase.status}</td>
+                            <td>{purchase.name}</td>
+                            <td>{purchase.purchaseArticle}</td>
+                            <td>{purchase.amount}</td>
+                            <td>{purchase.quantity}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+    );
+}
 
-    fetchData();
-  }, []);
-
-  return (
-    <div>
-      <h1>Products</h1>
-        {products.map(product => (
-          <h key={product.id}>
-            {product.name} - {product.purchaseArticle}
-          </h>
-        ))}
-    </div>
-  );
-};
-
-export default Spisok;
+export default PurchaseTable;

@@ -1,37 +1,58 @@
 /* Общие стили для .navbar */
 .navbar {
-    display: flex;
-    justify-content: space-around;
+
+
     background-color: #19A438;
-    min-height: 70px; /* Минимальная высота для обеспечения видимости */
-    align-items: center;
+    min-height: 70px;
+    width: 100%;
+    /* Минимальная высота для обеспечения видимости */
+
     font-size: 18px;
     color: black;
     font-family: Monda;
-    padding: 0 20px; /* Горизонтальные отступы для контейнера */
+    /* padding: 0 20px; Горизонтальные отступы для контейнера */
+}
+
+.cont {
+    width: 90%;
+    margin-inline: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 /* Стили для элементов .navbar при маленьких экранах (мобильные устройства) */
 @media only screen and (max-width: 600px) {
-    .navbar {
-        flex-direction: column; /* Размещаем элементы вертикально */
-        height: auto; /* Автоматическая высота, в зависимости от содержимого */
+    .cont {
+        flex-direction: column;
+        /* Размещаем элементы вертикально */
+        height: auto;
+        /* Автоматическая высота, в зависимости от содержимого */
     }
 
-    #name, #butt, #button {
-        margin: 10px 0; /* Добавляем вертикальные отступы между элементами */
-        width: 100%; /* Занимать всю доступную ширину */
-        text-align: center; /* Центрировать текст по центру */
+    #name,
+    #butt,
+    #button {
+        margin: 10px 0;
+        /* Добавляем вертикальные отступы между элементами */
+        width: 100%;
+        /* Занимать всю доступную ширину */
+        text-align: center;
+        /* Центрировать текст по центру */
     }
 }
 
 /* Стили для элементов .navbar при средних и больших экранах */
 @media only screen and (min-width: 601px) {
-    .navbar {
-        justify-content: flex-start; /* Размещаем элементы слева */
+    .cont {
+        justify-content: space-around;
+        /* Размещаем элементы слева */
     }
 
-    #name, #butt, #button {
-        margin: 0 10px; /* Добавляем горизонтальные отступы между элементами */
+    #name,
+    #butt,
+    #button {
+        margin: 0 10px;
+        /* Добавляем горизонтальные отступы между элементами */
     }
 }

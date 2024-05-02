@@ -1,21 +1,24 @@
-import { useState } from 'react'
-import './App.css'
-import Header from './Header'
-import Filter from './Filter'
-import Spisok from './spisok'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './Header';
+import Filter from './Filter';
+import MainPage from './MainPage'; // Обновляем импорт для главной страницы
+import SpisannyePage from './Spisannye'; // Обновляем импорт для страницы "Списанные"
+import AddTovarPage from './AddTovar'; // Обновляем импорт для страницы "Добавить товар"
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <Header>
-      </Header>
-      <Filter />
-      <Spisok/>
-
-    </>
-  )
+    <Router>
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/spisannye" element={<SpisannyePage />} />
+          <Route path="/add-tovar" element={<AddTovarPage />} />
+        </Routes>
+      </div>
+    </Router>
+  );
 }
 
-export default App
+export default App;
