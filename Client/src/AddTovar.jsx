@@ -62,7 +62,7 @@ function AddTovarPage() {
           <label>
             Дата покупки:
             <input
-              type="datetime-local"
+              type="date"
               name="purchaseDate"
               value={formData.purchaseDate}
               onChange={handleChange}
@@ -71,7 +71,7 @@ function AddTovarPage() {
           <label>
             Дата принятия на учёт:
             <input
-              type="datetime-local"
+              type="date"
               name="acceptanceDate"
               value={formData.acceptanceDate}
               onChange={handleChange}
