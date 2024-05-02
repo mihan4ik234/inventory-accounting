@@ -6,7 +6,7 @@ function AddTovarPage() {
     id: 0,
     purchaseDate: new Date().toISOString(),
     acceptanceDate: new Date().toISOString(),
-    status: "string",
+    status: 0,
     name: "string",
     purchaseArticle: "string",
     amount: 0,
