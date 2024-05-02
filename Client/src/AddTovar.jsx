@@ -1,30 +1,48 @@
-import React, { useState } from 'react';
-import './AddTovar.css'; // Подключаем файл со стилями
+import { useState } from "react";
+import "./AddTovar.css"; // Подключаем файл со стилями
 
 function AddTovarPage() {
   const [formData, setFormData] = useState({
-    name: '',
-    purchaseDate: '',
-    acceptanceDate: '',
-    status: '',
-    purchaseArticle: '',
-    quantity: '',
-    pricePerUnit: ''
+    id: 0,
+    purchaseDate: new Date().toISOString(),
+    acceptanceDate: new Date().toISOString(),
+    status: 0,
+    name: "",
+    purchaseArticle: "",
+    amount: 0,
+    quantity: 0,
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Здесь вы можете отправить данные formData на сервер
-    // Например, с помощью fetch или другой библиотеки для работы с HTTP запросами
-    // После успешного добавления товара вы можете выполнить дополнительные действия, если это необходимо
+
+    try {
+      const response = await fetch("http://localhost:5052/api/Products", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to add product");
+      }
+
+      // Дополнительные действия после успешного добавления товара
+      console.log("Product added successfully");
+    } catch (error) {
+      console.error("Error adding product:", error);
+    }
   };
 
   return (
@@ -34,34 +52,68 @@ function AddTovarPage() {
         <form onSubmit={handleSubmit}>
           <label>
             Название:
-            <input type="text" name="name" value={formData.name} onChange={handleChange} />
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+            />
           </label>
           <label>
             Дата покупки:
-            <input type="date" name="purchaseDate" value={formData.purchaseDate} onChange={handleChange} />
+            <input
+              type="datetime-local"
+              name="purchaseDate"
+              value={formData.purchaseDate}
+              onChange={handleChange}
+            />
           </label>
           <label>
             Дата принятия на учёт:
-            <input type="date" name="acceptanceDate" value={formData.acceptanceDate} onChange={handleChange} />
+            <input
+              type="datetime-local"
+              name="acceptanceDate"
+              value={formData.acceptanceDate}
+              onChange={handleChange}
+            />
           </label>
           <label>
             Статус:
-            <select name="status" value={formData.status} onChange={handleChange}>
-              <option value="1">Принят</option>
+            <select
+              name="status"
+              value={formData.status}
+              onChange={handleChange}
+            >
               <option value="0">Не принят</option>
+              <option value="1">Принят</option>
             </select>
           </label>
           <label>
             Статья закупки:
-            <input type="text" name="purchaseArticle" value={formData.purchaseArticle} onChange={handleChange} />
+            <input
+              type="text"
+              name="purchaseArticle"
+              value={formData.purchaseArticle}
+              onChange={handleChange}
+            />
           </label>
           <label>
             Количество:
-            <input type="number" name="quantity" value={formData.quantity} onChange={handleChange} />
+            <input
+              type="number"
+              name="quantity"
+              value={formData.quantity}
+              onChange={handleChange}
+            />
           </label>
           <label>
-            Цена за единицу товара:
-            <input type="number" name="pricePerUnit" value={formData.pricePerUnit} onChange={handleChange} />
+            Сумма:
+            <input
+              type="number"
+              name="amount"
+              value={formData.amount}
+              onChange={handleChange}
+            />
           </label>
           <button type="submit">Добавить</button>
         </form>

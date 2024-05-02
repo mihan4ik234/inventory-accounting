@@ -2,6 +2,7 @@ using IA_API.Models;
 using IA_API.Services;
 using IA_API.Context;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 
 
@@ -45,9 +46,15 @@ namespace IA_API.Controllers
             {
                 return BadRequest();
             }
+
+            // Устанавливаем AcceptanceDate в формате UTC
+            product.AcceptanceDate = DateTime.UtcNow;
+            product.PurchaseDate = DateTime.UtcNow;
+
             _productService.AddProduct(product);
             return CreatedAtAction(nameof(Get), new { id = product.Id }, product);
         }
+
 
         // PUT: api/Products/5
         [HttpPut("{id}")]
