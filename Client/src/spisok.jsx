@@ -7,7 +7,7 @@ function formatDate(dateString) {
   return date.toLocaleDateString(undefined, options);
 }
 
-function Spisok() {
+function PurchaseTable() {
   const [purchases, setPurchases] = useState([]);
 
   useEffect(() => {
@@ -32,25 +32,7 @@ function Spisok() {
   };
 
   const handleWriteOff = (id) => {
-    fetch(`http://localhost:5052/api/products/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ status: "Pending" }),
-    })
-      .then((response) => {
-        if (response.ok) {
-          setPurchases(purchases.filter((purchase) => purchase.id !== id));
-          fetch("http://localhost:5052/api/products?status=Pending")
-            .then((response) => response.json())
-            .then((data) => setPendingPurchases(data))
-            .catch((error) => console.error("Ошибка при получении данных:", error));
-        } else {
-          console.error("Ошибка при изменении статуса:", response.statusText);
-        }
-      })
-      .catch((error) => console.error("Ошибка при изменении статуса:", error));
+    // Действия для списания товара с указанным ID
   };
 
   return (
@@ -66,6 +48,7 @@ function Spisok() {
             <th>Статья покупки</th>
             <th>Сумма</th>
             <th>Количество</th>
+            <th>Общая сумма</th>
             <th>Действия</th>
           </tr>
         </thead>
@@ -80,6 +63,7 @@ function Spisok() {
               <td>{purchase.purchaseArticle}</td>
               <td>{purchase.amount}</td>
               <td>{purchase.quantity}</td>
+              <td>{purchase.amount * purchase.quantity}</td>
               <td>
                 <button
                   onClick={() => handleDelete(purchase.id)}
@@ -91,14 +75,12 @@ function Spisok() {
                 >
                   Удалить
                 </button>
-                {purchase.status === 1 && (
-                  <button
-                    onClick={() => handleWriteOff(purchase.id)}
-                    style={{ backgroundColor: "gray", borderRadius: "30px" }}
-                  >
-                    Списать
-                  </button>
-                )}
+                <button
+                  onClick={() => handleWriteOff(purchase.id)}
+                  style={{ backgroundColor: "gray", borderRadius: "30px" }}
+                >
+                  Списать
+                </button>
               </td>
             </tr>
           ))}
@@ -108,4 +90,4 @@ function Spisok() {
   );
 }
 
-export default Spisok;
+export default PurchaseTable;
