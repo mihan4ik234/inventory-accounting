@@ -17,3 +17,15 @@
 .purchase-table th {
     background-color: #ff0000;
 }
+
+.purchase-table button {
+    width: 100px; /* Ширина кнопки */
+    margin: 0 5px; /* Расстояние между кнопками */
+    border-radius: 30px;
+  }
+  
+  .purchase-table td:last-child {
+    display: flex;
+    justify-content: space-around;
+  }
+  

@@ -1,11 +1,11 @@
 import React from 'react';
 import Filter from './Filter';
-import Spisok from "./spisok"; // Обновляем импорт
+import Spisok1 from "./spisokspisannye"; // Обновляем импорт
 function SpisannyePage() {
   return (
     <div className="SpisannyePage">
       <Filter />
-      <Spisok />
+      <Spisok1 />
     </div>
   );
 }

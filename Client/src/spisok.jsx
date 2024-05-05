@@ -1,7 +1,13 @@
 import { useState, useEffect } from "react";
 import "./spisok.css";
 
-function PurchaseTable() {
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+  return date.toLocaleDateString(undefined, options);
+}
+
+function Spisok() {
   const [purchases, setPurchases] = useState([]);
 
   useEffect(() => {
@@ -26,7 +32,25 @@ function PurchaseTable() {
   };
 
   const handleWriteOff = (id) => {
-    // Действия для списания товара с указанным ID
+    fetch(`http://localhost:5052/api/products/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ status: "Pending" }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          setPurchases(purchases.filter((purchase) => purchase.id !== id));
+          fetch("http://localhost:5052/api/products?status=Pending")
+            .then((response) => response.json())
+            .then((data) => setPendingPurchases(data))
+            .catch((error) => console.error("Ошибка при получении данных:", error));
+        } else {
+          console.error("Ошибка при изменении статуса:", response.statusText);
+        }
+      })
+      .catch((error) => console.error("Ошибка при изменении статуса:", error));
   };
 
   return (
@@ -49,8 +73,8 @@ function PurchaseTable() {
           {purchases.map((purchase) => (
             <tr key={purchase.id}>
               <td>{purchase.id}</td>
-              <td>{purchase.purchaseDate}</td>
-              <td>{purchase.acceptanceDate}</td>
+              <td>{formatDate(purchase.purchaseDate)}</td>
+              <td>{formatDate(purchase.acceptanceDate)}</td>
               <td>{purchase.status === 0 ? "Pending" : "Accepted"}</td>
               <td>{purchase.name}</td>
               <td>{purchase.purchaseArticle}</td>
@@ -67,12 +91,14 @@ function PurchaseTable() {
                 >
                   Удалить
                 </button>
-                <button
-                  onClick={() => handleWriteOff(purchase.id)}
-                  style={{ backgroundColor: "gray", borderRadius: "30px" }}
-                >
-                  Списать
-                </button>
+                {purchase.status === 1 && (
+                  <button
+                    onClick={() => handleWriteOff(purchase.id)}
+                    style={{ backgroundColor: "gray", borderRadius: "30px" }}
+                  >
+                    Списать
+                  </button>
+                )}
               </td>
             </tr>
           ))}
@@ -82,4 +108,4 @@ function PurchaseTable() {
   );
 }
 
-export default PurchaseTable;
+export default Spisok;
