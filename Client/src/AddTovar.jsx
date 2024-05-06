@@ -2,10 +2,12 @@ import { useState } from "react";
 import "./AddTovar.css"; // Подключаем файл со стилями
 
 function AddTovarPage() {
+  const currentDate = new Date().toLocaleDateString("en-CA");
+
   const [formData, setFormData] = useState({
     id: 0,
-    purchaseDate: new Date().toISOString(),
-    acceptanceDate: new Date().toISOString(),
+    purchaseDate: currentDate,
+    acceptanceDate: currentDate,
     status: 0,
     name: "string",
     purchaseArticle: "string",
@@ -40,6 +42,7 @@ function AddTovarPage() {
 
       // Дополнительные действия после успешного добавления товара
       console.log("Product added successfully");
+      console.log(formData);
     } catch (error) {
       console.error("Error adding product:", error);
     }

@@ -3,7 +3,7 @@ import "./spisok.css";
 
 function formatDate(dateString) {
   const date = new Date(dateString);
-  const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+  const options = { year: "numeric", month: "numeric", day: "numeric" };
   return date.toLocaleDateString(undefined, options);
 }
 
@@ -11,9 +11,14 @@ function SpisokSpisannye() {
   const [pendingPurchases, setPendingPurchases] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5052/api/products?status=Pending")
+    fetch("http://localhost:5052/api/products")
       .then((response) => response.json())
-      .then((data) => setPendingPurchases(data))
+      .then((data) => {
+        const filteredPurchases = data.filter(
+          (purchase) => purchase.status === 0
+        );
+        setPendingPurchases(filteredPurchases);
+      })
       .catch((error) => console.error("Ошибка при получении данных:", error));
   }, []);
 
@@ -40,14 +45,16 @@ function SpisokSpisannye() {
               <td>{purchase.id}</td>
               <td>{formatDate(purchase.purchaseDate)}</td>
               <td>{formatDate(purchase.acceptanceDate)}</td>
-              <td>Pending</td>
+              <td>{purchase.status === 0 ? "Списано" : "Принято"}</td>
               <td>{purchase.name}</td>
               <td>{purchase.purchaseArticle}</td>
               <td>{purchase.amount}</td>
               <td>{purchase.quantity}</td>
               <td>
                 {/* Добавьте кнопку для изменения статуса на Accepted */}
-                <button onClick={() => handleAccept(purchase.id)}>Принять</button>
+                <button onClick={() => handleAccept(purchase.id)}>
+                  Принять
+                </button>
               </td>
             </tr>
           ))}

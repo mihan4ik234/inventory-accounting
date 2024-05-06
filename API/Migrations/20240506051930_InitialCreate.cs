@@ -21,10 +21,10 @@ namespace IA_API.Migrations
                     PurchaseDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     AcceptanceDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     Status = table.Column<int>(type: "integer", nullable: true),
-                    Name = table.Column<string>(type: "text", nullable: false),
-                    PurchaseArticle = table.Column<string>(type: "text", nullable: false),
-                    Amount = table.Column<decimal>(type: "numeric", nullable: false),
-                    Quantity = table.Column<int>(type: "integer", nullable: false)
+                    Name = table.Column<string>(type: "text", nullable: true),
+                    PurchaseArticle = table.Column<string>(type: "text", nullable: true),
+                    Amount = table.Column<decimal>(type: "numeric", nullable: true),
+                    Quantity = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
                 {

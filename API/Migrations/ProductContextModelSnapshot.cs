@@ -33,21 +33,19 @@ namespace IA_API.Migrations
                     b.Property<DateTime>("AcceptanceDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<decimal>("Amount")
+                    b.Property<decimal?>("Amount")
                         .HasColumnType("numeric");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("PurchaseArticle")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime>("PurchaseDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("Quantity")
+                    b.Property<int?>("Quantity")
                         .HasColumnType("integer");
 
                     b.Property<int?>("Status")

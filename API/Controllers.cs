@@ -48,8 +48,8 @@ namespace IA_API.Controllers
             }
 
             // Устанавливаем AcceptanceDate в формате UTC
-            product.AcceptanceDate = DateTime.UtcNow;
-            product.PurchaseDate = DateTime.UtcNow;
+            product.AcceptanceDate = product.AcceptanceDate.ToUniversalTime();
+            product.PurchaseDate = product.PurchaseDate.ToUniversalTime();
 
             _productService.AddProduct(product);
             return CreatedAtAction(nameof(Get), new { id = product.Id }, product);

@@ -3,7 +3,7 @@ import "./spisok.css";
 
 function formatDate(dateString) {
   const date = new Date(dateString);
-  const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+  const options = { year: "numeric", month: "numeric", day: "numeric" };
   return date.toLocaleDateString(undefined, options);
 }
 
@@ -13,7 +13,12 @@ function PurchaseTable() {
   useEffect(() => {
     fetch("http://localhost:5052/api/products")
       .then((response) => response.json())
-      .then((data) => setPurchases(data))
+      .then((data) => {
+        const filteredPurchases = data.filter(
+          (purchase) => purchase.status === 1
+        );
+        setPurchases(filteredPurchases);
+      })
       .catch((error) => console.error("Ошибка при получении данных:", error));
   }, []);
 
@@ -32,7 +37,37 @@ function PurchaseTable() {
   };
 
   const handleWriteOff = (id) => {
-    // Действия для списания товара с указанным ID
+    // Находим товар с указанным id в массиве purchases
+    const product = purchases.find((purchase) => purchase.id === id);
+
+    // Проверяем, найден ли товар
+    if (product) {
+      // Формируем объект данных товара для отправки на сервер
+      const productData = {
+        ...product, // Копируем все поля товара
+        status: 0, // Меняем статус с 1 на 0
+      };
+
+      // Отправляем запрос на сервер
+      fetch(`http://localhost:5052/api/products/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(productData),
+      })
+        .then((response) => {
+          if (response.ok) {
+            // Если запрос успешен, обновляем состояние purchases, убирая товар с указанным id
+            setPurchases(purchases.filter((purchase) => purchase.id !== id));
+          } else {
+            console.error("Ошибка при списании товара:", response.statusText);
+          }
+        })
+        .catch((error) => console.error("Ошибка при списании товара:", error));
+    } else {
+      console.error("Товар с id", id, "не найден.");
+    }
   };
 
   return (
@@ -58,7 +93,7 @@ function PurchaseTable() {
               <td>{purchase.id}</td>
               <td>{formatDate(purchase.purchaseDate)}</td>
               <td>{formatDate(purchase.acceptanceDate)}</td>
-              <td>{purchase.status === 0 ? "Pending" : "Accepted"}</td>
+              <td>{purchase.status === 0 ? "Списано" : "Принято"}</td>
               <td>{purchase.name}</td>
               <td>{purchase.purchaseArticle}</td>
               <td>{purchase.amount}</td>
