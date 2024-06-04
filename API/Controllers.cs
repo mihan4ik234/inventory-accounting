@@ -3,6 +3,7 @@ using IA_API.Services;
 using IA_API.Context;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
+using Microsoft.AspNetCore.Authorization;
 
 
 
@@ -10,6 +11,8 @@ namespace IA_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
+
     public class ProductsController : ControllerBase
     {
         private readonly IProductService _productService;

@@ -210,3 +210,11 @@ C:\Users\USER\Desktop\inventory-accounting\API\obj\Debug\net8.0\refint\IA-API.dl
 C:\Users\USER\Desktop\inventory-accounting\API\obj\Debug\net8.0\IA-API.pdb
 C:\Users\USER\Desktop\inventory-accounting\API\obj\Debug\net8.0\IA-API.genruntimeconfig.cache
 C:\Users\USER\Desktop\inventory-accounting\API\obj\Debug\net8.0\ref\IA-API.dll
+C:\SR\inventory-accounting\API\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\SR\inventory-accounting\API\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\SR\inventory-accounting\API\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\SR\inventory-accounting\API\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\SR\inventory-accounting\API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\SR\inventory-accounting\API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\SR\inventory-accounting\API\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\SR\inventory-accounting\API\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
