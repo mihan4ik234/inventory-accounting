@@ -1,29 +1,25 @@
-import { useState } from 'react'
-import './Filter.css'
+import { useState } from 'react';
 
-function Filter() {
-    const [count, setCount] = useState(0)
+function Filter({ onChange }) {
+  const [selectedOption, setSelectedOption] = useState('');
 
-    return (
-        <>
-            <div className='all'>
-                <div className='filter'>
-                    <div className='Name'>
-                        <p id='name'>Сортировать по:</p>
-                    </div>
-                    <div className='variant'>
-                        <p id='variant'>А-Я</p>
-                        <p id='variant'>дата преобретения</p>
-                        <p id='variant'>Статья закупки</p>
-                        <p id='variant'>Самые старые</p>
-                        <p id='variant'>Самые дорогие</p>
-                        <p id='variant'>Самые дешёвые</p>
-                    </div>
-                </div>
-            </div>
+  const handleOptionChange = (option) => {
+    setSelectedOption(option);
+    onChange(option);
+  };
 
-        </>
-    )
+  return (
+    <div className='filter'>
+      <p>Сортировать по:</p>
+      <select value={selectedOption} onChange={(e) => handleOptionChange(e.target.value)}>
+        <option value=''>Выберите опцию</option>
+        <option value='name'>А-Я</option>
+        <option value='purchaseDate'>Дата преобретения</option>
+        <option value='purchaseArticle'>Статья закупки</option>
+        {/* Добавьте остальные опции фильтрации здесь */}
+      </select>
+    </div>
+  );
 }
 
-export default Filter
+export default Filter;
