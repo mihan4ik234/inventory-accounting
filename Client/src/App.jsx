@@ -5,6 +5,7 @@ import Filter from './Filter';
 import MainPage from './MainPage'; // Обновляем импорт для главной страницы
 import SpisannyePage from './Spisannye'; // Обновляем импорт для страницы "Списанные"
 import AddTovarPage from './AddTovar'; // Обновляем импорт для страницы "Добавить товар"
+import Autharization from './Autharization';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="/spisannye" element={<SpisannyePage />} />
           <Route path="/add-tovar" element={<AddTovarPage />} />
+          <Route path="/autharization" element={<Autharization />}/>
         </Routes>
       </div>
     </Router>
