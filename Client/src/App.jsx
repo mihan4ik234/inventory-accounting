@@ -9,6 +9,7 @@ import Autharization from "./Autharization";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 import MainPageUsers from './MainPageUsers';
+import MainPageAdmin from "./MainPageAdmin";
 
 function App() {
   return (
@@ -38,8 +39,16 @@ function App() {
               </PrivateRoute>
             }
           />
+          <Route
+            path="/admin"
+            element={
+              <PrivateRoute roles={["admin"]}>
+                <MainPageAdmin />
+              </PrivateRoute>
+            }
+            ></Route>
 
-          {/* Private Routes for Accountant */}
+            {/* Private Routes for Accountant */}
           <Route
             path="/spisannye"
             element={

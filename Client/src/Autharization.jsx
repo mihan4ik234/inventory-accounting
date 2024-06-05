@@ -40,6 +40,7 @@ function Autharization() {
 
           // Сохранение токена в localStorage
           localStorage.setItem("token", data.token);
+          
 
           // Сохранение роли в localStorage в зависимости от логина
           if (login === "Admin") {
