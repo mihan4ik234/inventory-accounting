@@ -3036,16 +3036,11 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
     "C:\\Users\\Basil\\.nuget\\packages\\": {}
-=======
-    "C:\\Users\\USER\\.nuget\\packages\\": {}
->>>>>>> 8cb7a598ccc45d32275bd448a5aa17c88f85420c
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
       "projectUniqueName": "C:\\SR\\inventory-accounting\\API\\IA-API.csproj",
       "projectName": "IA-API",
       "projectPath": "C:\\SR\\inventory-accounting\\API\\IA-API.csproj",
@@ -3055,25 +3050,12 @@
       "configFilePaths": [
         "C:\\Users\\Basil\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-=======
-      "projectUniqueName": "C:\\Users\\USER\\Desktop\\inventory-accounting\\api\\IA-API.csproj",
-      "projectName": "IA-API",
-      "projectPath": "C:\\Users\\USER\\Desktop\\inventory-accounting\\api\\IA-API.csproj",
-      "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\USER\\Desktop\\inventory-accounting\\api\\obj\\",
-      "projectStyle": "PackageReference",
-      "configFilePaths": [
-        "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"
->>>>>>> 8cb7a598ccc45d32275bd448a5aa17c88f85420c
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-<<<<<<< HEAD
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-=======
->>>>>>> 8cb7a598ccc45d32275bd448a5aa17c88f85420c
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

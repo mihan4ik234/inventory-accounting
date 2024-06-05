@@ -1,29 +1,61 @@
-import React, { useState } from 'react';
-import styles from './Autharization.module.css';
+import React, { useState } from "react";
+import styles from "./Autharization.module.css";
 
 function Autharization() {
-  const [login, setLogin] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleLoginChange = (e) => setLogin(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
 
   const validateForm = () => {
-    if (login === '' || password === '') {
-      setError('Все поля обязательны для заполнения');
+    if (login === "" || password === "") {
+      setError("Все поля обязательны для заполнения");
       return false;
     }
-    setError('');
+    setError("");
     return true;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      // Handle the login logic here
-      console.log('Логин:', login);
-      console.log('Пароль:', password);
+      try {
+        const response = await fetch("http://localhost:5052/api/Auth/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            accept: "*/*",
+          },
+          body: JSON.stringify({
+            username: login,
+            password: password,
+          }),
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          console.log("Успешная авторизация:", data);
+
+          // Сохранение токена в localStorage
+          localStorage.setItem("token", data.token);
+
+          // Сохранение роли в localStorage в зависимости от логина
+          if (login === "Admin") {
+            localStorage.setItem("role", "admin");
+          } else if (login === "Accountant") {
+            localStorage.setItem("role", "accountant");
+          }
+
+          // Дополнительные действия после успешной авторизации
+        } else {
+          const errorData = await response.json();
+          setError(`Ошибка авторизации: ${errorData.message}`);
+        }
+      } catch (err) {
+        setError(`Ошибка сети: ${err.message}`);
+      }
     }
   };
 
@@ -46,7 +78,9 @@ function Autharization() {
           onChange={handlePasswordChange}
           className={styles.input}
         />
-        <button type="submit" className={styles.button}>Sign In</button>
+        <button type="submit" className={styles.button}>
+          Sign In
+        </button>
       </form>
     </div>
   );

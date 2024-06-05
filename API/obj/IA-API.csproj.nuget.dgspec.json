@@ -1,47 +1,27 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
-    "C:\\SR\\inventory-accounting\\API\\IA-API.csproj": {}
+    "c:\\SR\\inventory-accounting\\API\\IA-API.csproj": {}
   },
   "projects": {
-    "C:\\SR\\inventory-accounting\\API\\IA-API.csproj": {
+    "c:\\SR\\inventory-accounting\\API\\IA-API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\SR\\inventory-accounting\\API\\IA-API.csproj",
+        "projectUniqueName": "c:\\SR\\inventory-accounting\\API\\IA-API.csproj",
         "projectName": "IA-API",
-        "projectPath": "C:\\SR\\inventory-accounting\\API\\IA-API.csproj",
+        "projectPath": "c:\\SR\\inventory-accounting\\API\\IA-API.csproj",
         "packagesPath": "C:\\Users\\Basil\\.nuget\\packages\\",
-        "outputPath": "C:\\SR\\inventory-accounting\\API\\obj\\",
+        "outputPath": "c:\\SR\\inventory-accounting\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Basil\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-=======
-    "C:\\Users\\USER\\Desktop\\inventory-accounting\\API\\IA-API.csproj": {}
-  },
-  "projects": {
-    "C:\\Users\\USER\\Desktop\\inventory-accounting\\API\\IA-API.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\USER\\Desktop\\inventory-accounting\\API\\IA-API.csproj",
-        "projectName": "IA-API",
-        "projectPath": "C:\\Users\\USER\\Desktop\\inventory-accounting\\API\\IA-API.csproj",
-        "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\USER\\Desktop\\inventory-accounting\\API\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"
->>>>>>> 8cb7a598ccc45d32275bd448a5aa17c88f85420c
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-<<<<<<< HEAD
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-=======
->>>>>>> 8cb7a598ccc45d32275bd448a5aa17c88f85420c
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

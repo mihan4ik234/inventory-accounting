@@ -1,11 +1,13 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './Header';
-import Filter from './Filter';
-import MainPage from './MainPage'; // Обновляем импорт для главной страницы
-import SpisannyePage from './Spisannye'; // Обновляем импорт для страницы "Списанные"
-import AddTovarPage from './AddTovar'; // Обновляем импорт для страницы "Добавить товар"
-import Autharization from './Autharization';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./Header";
+import Filter from "./Filter";
+import MainPage from "./MainPage";
+import SpisannyePage from "./Spisannye";
+import AddTovarPage from "./AddTovar";
+import Autharization from "./Autharization";
+import PrivateRoute from "./PrivateRoute";
+import PublicRoute from "./PublicRoute";
 
 function App() {
   return (
@@ -13,10 +15,38 @@ function App() {
       <div className="App">
         <Header />
         <Routes>
+          {/* Public Routes */}
+          <Route
+            path="/autharization"
+            element={
+              <PublicRoute>
+                <Autharization />
+              </PublicRoute>
+            }
+          />
+
+          {/* Routes for all users */}
           <Route path="/" element={<MainPage />} />
-          <Route path="/spisannye" element={<SpisannyePage />} />
-          <Route path="/add-tovar" element={<AddTovarPage />} />
-          <Route path="/autharization" element={<Autharization />}/>
+
+          {/* Private Routes for Admin */}
+          <Route
+            path="/add-tovar"
+            element={
+              <PrivateRoute roles={["admin"]}>
+                <AddTovarPage />
+              </PrivateRoute>
+            }
+          />
+
+          {/* Private Routes for Accountant */}
+          <Route
+            path="/spisannye"
+            element={
+              <PrivateRoute roles={["accountant"]}>
+                <SpisannyePage />
+              </PrivateRoute>
+            }
+          />
         </Routes>
       </div>
     </Router>
