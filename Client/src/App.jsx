@@ -8,6 +8,7 @@ import AddTovarPage from "./AddTovar";
 import Autharization from "./Autharization";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
+import MainPageUsers from './MainPageUsers';
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
           />
 
           {/* Routes for all users */}
-          <Route path="/" element={<MainPage />} />
+          <Route path="/" element={<MainPageUsers />} />
 
           {/* Private Routes for Admin */}
           <Route
