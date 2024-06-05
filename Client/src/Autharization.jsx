@@ -1,13 +1,16 @@
 import React, { useState } from "react";
-import styles from "./Autharization.module.css";
+import "./Autharization.css";
+import { useNavigate } from "react-router-dom";
 
-function Autharization() {
+function Authorization() {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
   const handleLoginChange = (e) => setLogin(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
+
+  const navigate = useNavigate();
 
   const validateForm = () => {
     if (login === "" || password === "") {
@@ -26,7 +29,7 @@ function Autharization() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            accept: "*/*",
+            "Accept": "*/*",
           },
           body: JSON.stringify({
             username: login,
@@ -37,10 +40,9 @@ function Autharization() {
         if (response.ok) {
           const data = await response.json();
           console.log("Успешная авторизация:", data);
-
+          
           // Сохранение токена в localStorage
           localStorage.setItem("token", data.token);
-          
 
           // Сохранение роли в localStorage в зависимости от логина
           if (login === "Admin") {
@@ -49,7 +51,8 @@ function Autharization() {
             localStorage.setItem("role", "accountant");
           }
 
-          // Дополнительные действия после успешной авторизации
+          // Перенаправление на главную страницу после успешной авторизации
+          navigate("/admin");
         } else {
           const errorData = await response.json();
           setError(`Ошибка авторизации: ${errorData.message}`);
@@ -87,4 +90,4 @@ function Autharization() {
   );
 }
 
-export default Autharization;
+export default Authorization;
